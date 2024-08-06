@@ -12,8 +12,6 @@ struct node
 
 class listaEncadeadaCircular
 {
-private:
-    
 public:
     node *sentinela;
 
@@ -21,13 +19,65 @@ public:
         sentinela = nullptr; 
     }
 
-    void inserir(node* x){
-        if (sentinela == nullptr){
-           x->prox = x;
-           sentinela = x;
+    void avancar() {
+        if (sentinela != nullptr) {
+            sentinela = sentinela->prox;
         }
     }
-    ~listaEncadeadaCircular();
+
+
+
+    void inserir(int x){
+        node* aux = new node();
+        aux->valor = x;
+        if (sentinela == nullptr){
+           aux->prox = aux;
+           sentinela = aux;
+        } else {
+            aux->prox = sentinela->prox;
+            sentinela->prox = aux;
+        }
+        avancar();
+    }
+
+    int inicioLista(){
+        node* inicio = sentinela->prox;
+        return inicio->valor;
+    }
+
+    int fimLista(){
+        return sentinela->valor;
+    }
+
+
+   ~listaEncadeadaCircular() {
+    if (sentinela != nullptr) {
+        node* current = sentinela->prox;
+        node* head = current;
+        do {
+            node* next = current->prox;
+            delete current;
+            current = next;
+        } while (current != head);
+        sentinela = nullptr;
+    }
+}
+
+
 };
+
+int main(){
+    listaEncadeadaCircular L;
+
+    L.inserir(1);
+    L.inserir(2);
+    L.inserir(3);
+
+    L.inicioLista();
+    L.fimLista();
+
+    cout << "Início da Lista: " << L.inicioLista() << endl;
+    cout << "Fim da Lista: " << L.fimLista() << endl;
+}
 
 
