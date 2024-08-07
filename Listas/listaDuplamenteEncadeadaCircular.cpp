@@ -21,7 +21,7 @@ public:
         sentinela = nullptr;
     }
 
-    void inserir(int x){
+    void inserirNoInicio (int x){
         node* aux = new node();
         aux->valor = x;
         if (sentinela == nullptr){ //se estiver vazio;
@@ -38,7 +38,23 @@ public:
         cout << "Elemento inserido com sucesso!";
     }
 
-    
+    void inserirNoFim(int x){
+        node* aux = new node();
+        aux->valor = x;
+        if (sentinela == nullptr){
+            aux->prox = aux;
+            aux->ant = aux;
+            sentinela = aux;
+        } else {
+            aux->ant = sentinela->ant;
+            aux->prox = sentinela;
+            sentinela->ant->prox = aux;
+            sentinela->ant = aux;
+        }
+
+    }
+
+
 
 
 
