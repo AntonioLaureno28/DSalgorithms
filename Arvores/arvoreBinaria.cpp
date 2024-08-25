@@ -115,6 +115,24 @@ public:
             *cima = sucessor;
         }
     }
-    ~arvoreBinaria();
+
+    void imprimir(node* n){
+        if (n != nullptr){
+            imprimir(n->esq);
+            cout << n->valor << endl;
+            imprimir(n->dir);
+        }
+    }
+
+    void deletarArvore(node* n){
+        if (n != nullptr){
+            deletarArvore(n->esq);
+            deletarArvore(n->dir);
+            delete n;
+        }
+    }
+    ~arvoreBinaria(){
+        deletarArvore(raiz);
+    }
 };
 
