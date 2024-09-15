@@ -56,6 +56,9 @@ int main(){
             double valor = 3.14;
 
             M(i,j) = valor;
+
+            cout << M(i,j);
+            
         }
         catch(const exception& e)
         {
