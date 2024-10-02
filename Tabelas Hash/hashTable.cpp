@@ -29,7 +29,7 @@ private:
 public:
     Hash(int tam_vetor){
         m = tam_vetor;
-        estrutura = new Node*[tam_vetor];
+        estrutura = new Node*[tam_vetor]; // criando a hash table
         for (int i = 0; i < m; i++){
             estrutura[i] = nullptr;
         }
@@ -40,7 +40,7 @@ public:
 
     void inserir(Aluno aluno){
         int local = funcaoHash(aluno);
-        Node* aux = new Node(aluno);
+        Node* aux = new Node(aluno); // crio o nó 
 
         aux->next = estrutura[local];
         estrutura[local] = aux;

@@ -47,6 +47,7 @@ public:
             cout << "Elemento já se encontra na arvore" << endl;
         }
     }
+
     ~novaArvore();
 };
 

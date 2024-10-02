@@ -23,7 +23,7 @@ private:
     int m;
     int quant_elem;
     float limite_carga = 0.8;
-    Node** estrutura;
+    Node** estrutura;  //Vetor de ponteiros 
     int funcaoHash(Aluno aluno){
         return aluno.Ra % m;
     }
@@ -33,15 +33,15 @@ private:
         for (int i = 0; i < novo_tam; i++)
         {
             nova_estrutura[i] = nullptr;
-        }
+        }                                   // inicializando a nova tabela hash redimensionada
 
         for (int i = 0; i < m; i++)
         {
             Node* atual = estrutura[i];
             while (atual != nullptr)
             {
-                Node* proximo = atual->next;
-                int novo_indice = atual->aluno.Ra % novo_tam;
+                Node* proximo = atual->next; // precisamos garantir o acesso ao próximo elemento da lista 
+                int novo_indice = atual->aluno.Ra % novo_tam; // calculo pra descobrir o novo indice
                 atual->next = nova_estrutura[novo_indice];  
                 nova_estrutura[novo_indice] = atual;  
                 atual = proximo;  
